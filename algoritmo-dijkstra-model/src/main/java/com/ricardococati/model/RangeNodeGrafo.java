@@ -2,11 +2,11 @@ package com.ricardococati.model;
 
 import java.util.List;
 
-public class RangeDeNosDoGrafo {
+public class RangeNodeGrafo {
 
     List<String> nosDoGrafo;
 
-    public RangeDeNosDoGrafo() {
+    public RangeNodeGrafo() {
         super();
     }
 

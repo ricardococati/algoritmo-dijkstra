@@ -1,35 +1,17 @@
-package com.ricardococati.campanha;
+/*package com.ricardococati.campanha;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
-import java.util.Arrays;
-import java.util.List;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ricardococati.config.ObjectMapperConfig;
-import com.ricardococati.model.Campanha;
-import com.ricardococati.service.CampanhaService;
-import org.junit.Assert;
+import com.ricardococati.service.GrafoService;
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.base.Charsets;
-import com.google.common.io.Resources;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -39,7 +21,7 @@ public class CampanhaSocioTorcedorApplicationTests {
 	protected WebApplicationContext context;
 
 	@MockBean
-	private CampanhaService campanhaService;
+	private GrafoService campanhaService;
 
 	private MockMvc mvc;
 
@@ -163,4 +145,4 @@ public class CampanhaSocioTorcedorApplicationTests {
 		this.mvc.perform(get("/campanhas/time/gremio")).andExpect(status().isNotFound());
 	}
 
-}
+}*/

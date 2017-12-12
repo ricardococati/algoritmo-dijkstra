@@ -1,7 +1,23 @@
 package com.ricardococati.dto;
 
-/**
- * Created by joao on 11/12/17.
- */
 public class GrafoDTO {
+
+    private int custoDaRota;
+    private String descricao;
+
+    public int getCustoDaRota() {
+        return custoDaRota;
+    }
+
+    public void setCustoDaRota(int custoDaRota) {
+        this.custoDaRota = custoDaRota;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 }
