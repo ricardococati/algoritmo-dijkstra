@@ -10,6 +10,7 @@ import com.ricardococati.service.algoritmo.Vertice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,14 +27,15 @@ public class GrafoService implements Serializable {
 		this.grafoRepository = grafoRepository;
 	}
 
-	public GrafoDTO retornaMenorCaminhoGrafoDTO(RangeNodeGrafo rangeDeNosDoGrafo){
+	public GrafoDTO retornaMenorCaminhoGrafoDTO(List<String> ids){
 		GrafoDTO retorno = new GrafoDTO();
 		Grafo teste = new Grafo();
+		List<CustoNodeGrafo> list = this.findAll();
 		//teste.setVertices(LerDoArquivo.lerGrafo(a0));
 		Vertice verticeOrigem = new Vertice();
 		Vertice verticeDestino = new Vertice();
 
-		int primeiraPosicao = 0;
+		/*int primeiraPosicao = 0;
 		int ultimoItemDaLista = rangeDeNosDoGrafo.getNosDoGrafo().size() - 1;
 
 		verticeOrigem = teste.encontrarVertice(rangeDeNosDoGrafo.getNosDoGrafo().get(primeiraPosicao));
@@ -41,8 +43,13 @@ public class GrafoService implements Serializable {
 
 		List<Vertice> resultado = new ArrayList<>();
 		AlgoritmoDijkstra algoritmo = new AlgoritmoDijkstra();
-		resultado = algoritmo.encontrarMenorCaminhoDijkstra(teste, verticeOrigem, verticeDestino);
+		resultado = algoritmo.encontrarMenorCaminhoDijkstra(teste, verticeOrigem, verticeDestino);*/
 		return retorno;
+	}
+
+	@Transactional
+	public void save(final CustoNodeGrafo custoNodeGrafo) {
+		this.grafoRepository.save(custoNodeGrafo);
 	}
 
 	public List<CustoNodeGrafo> findAll() {

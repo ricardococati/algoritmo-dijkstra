@@ -1,12 +1,14 @@
 package com.ricardococati.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by joao on 12/12/17.
  */
 @Entity
-public class CustoNodeGrafo {
+@Table(name = "custonodegrafo")
+public class CustoNodeGrafo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
