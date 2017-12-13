@@ -6,6 +6,7 @@ import com.ricardococati.model.RangeNodeGrafo;
 import com.ricardococati.repository.GrafoRepository;
 import com.ricardococati.service.algoritmo.AlgoritmoDijkstra;
 import com.ricardococati.service.algoritmo.Grafo;
+import com.ricardococati.service.algoritmo.LerDoArquivo;
 import com.ricardococati.service.algoritmo.Vertice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,21 +30,27 @@ public class GrafoService implements Serializable {
 
 	public GrafoDTO retornaMenorCaminhoGrafoDTO(List<String> ids){
 		GrafoDTO retorno = new GrafoDTO();
-		Grafo teste = new Grafo();
+		Grafo grafo = new Grafo();
 		List<CustoNodeGrafo> list = this.findAll();
-		//teste.setVertices(LerDoArquivo.lerGrafo(a0));
+		grafo.setVertices(LerDoArquivo.montaListaVertice(list));
 		Vertice verticeOrigem = new Vertice();
 		Vertice verticeDestino = new Vertice();
 
-		/*int primeiraPosicao = 0;
-		int ultimoItemDaLista = rangeDeNosDoGrafo.getNosDoGrafo().size() - 1;
+		int primeiraPosicao = 0;
+		int ultimoItemDaLista = ids.size() - 1;
 
-		verticeOrigem = teste.encontrarVertice(rangeDeNosDoGrafo.getNosDoGrafo().get(primeiraPosicao));
-		verticeDestino = teste.encontrarVertice(rangeDeNosDoGrafo.getNosDoGrafo().get(ultimoItemDaLista));
+		verticeOrigem = grafo.encontrarVertice(ids.get(primeiraPosicao));
+		verticeDestino = grafo.encontrarVertice(ids.get(ultimoItemDaLista));
 
 		List<Vertice> resultado = new ArrayList<>();
 		AlgoritmoDijkstra algoritmo = new AlgoritmoDijkstra();
-		resultado = algoritmo.encontrarMenorCaminhoDijkstra(teste, verticeOrigem, verticeDestino);*/
+		resultado = algoritmo.encontrarMenorCaminhoDijkstra(grafo, verticeOrigem, verticeDestino);
+		StringBuilder strBuilder = new StringBuilder();
+		for (int indice = 0; indice < resultado.size(); indice++) {
+			retorno.setCustoDaRota(resultado.get(indice).getDistancia() + indice);
+			strBuilder.append("-" + resultado.get(indice).getDescricao()+"-");
+		}
+		retorno.setDescricao(strBuilder.toString());
 		return retorno;
 	}
 

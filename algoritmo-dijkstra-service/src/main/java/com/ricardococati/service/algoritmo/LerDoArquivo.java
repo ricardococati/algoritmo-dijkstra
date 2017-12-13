@@ -7,19 +7,19 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
+import com.ricardococati.model.CustoNodeGrafo;
+
 public class LerDoArquivo {
 
-	public static List<Vertice> montaListaVertice(String nomeArquivo) {
+	public static List<Vertice> montaListaVertice(List<CustoNodeGrafo> list) {
 
 		Grafo g = new Grafo();
 		Vertice v;
-		File f = new File(nomeArquivo);
 		String vertices[];
 		String linha;
 		ArrayList<String[]> s1 = new ArrayList<String[]>();
 
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(f));
 
 			Map<String, Vertice> mapa = new HashMap<String, Vertice>();
 
