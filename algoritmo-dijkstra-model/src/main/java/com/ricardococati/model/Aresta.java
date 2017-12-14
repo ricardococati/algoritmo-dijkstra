@@ -1,4 +1,4 @@
-package com.ricardococati.service.algoritmo;
+package com.ricardococati.model;
 
 public class Aresta {
 

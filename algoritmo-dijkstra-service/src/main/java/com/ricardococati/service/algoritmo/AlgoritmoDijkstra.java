@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.ricardococati.model.Grafo;
+import com.ricardococati.model.Vertice;
+
 public class AlgoritmoDijkstra {
 
 	List<Vertice> menorCaminho = new ArrayList<Vertice>();
