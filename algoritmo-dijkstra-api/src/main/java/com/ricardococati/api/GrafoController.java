@@ -4,13 +4,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
+import com.ricardococati.model.RangeDeNosDoGrafo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.ricardococati.dto.GrafoDTO;
 import com.ricardococati.service.GrafoService;
@@ -35,10 +33,10 @@ public class GrafoController {
 
 	@ApiOperation(value = "grafo", notes = NOTAS)
 	@RequestMapping(path="/grafo" , method = RequestMethod.GET)
-	public ResponseEntity<GrafoDTO>  listaCustoDaRota(@RequestParam(name = "ids", required = false) List<String> ids) {
+	public ResponseEntity<GrafoDTO>  listaCustoDaRota(RangeDeNosDoGrafo rangeDeNosDoGrafo) {
 		GrafoDTO grafoDTO = null;
 		try {
-			grafoDTO = this.grafoService.retornaMenorCaminhoGrafoDTO(ids);
+			grafoDTO = this.grafoService.retornaMenorCaminhoGrafoDTO(rangeDeNosDoGrafo);
 			if (Objects.isNull(grafoDTO)) {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}

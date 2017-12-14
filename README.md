@@ -32,6 +32,6 @@ Massa de dados para teste:
 
 ```json
 
-	A, D, E
+	A, D
 
 ```
