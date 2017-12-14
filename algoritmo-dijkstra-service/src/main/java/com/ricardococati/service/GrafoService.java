@@ -36,7 +36,7 @@ public class GrafoService implements Serializable {
 		resultado = algoritmo.encontrarMenorCaminhoDijkstra(grafo, verticeOrigem, verticeDestino);
 		StringBuilder strBuilder = new StringBuilder();
 		for (int indice = 0; indice < resultado.size(); indice++) {
-			retorno.setCustoDaRota(resultado.get(indice).getDistancia() + indice);
+			retorno.setCustoDaRota(resultado.get(indice).getDistancia());
 			strBuilder.append("-" + resultado.get(indice).getDescricao()+"-");
 		}
 		retorno.setDescricao(strBuilder.toString());
