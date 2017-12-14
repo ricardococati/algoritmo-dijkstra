@@ -35,7 +35,7 @@ public class GrafoService implements Serializable {
 
 		List<Vertice> resultado = new ArrayList<>();
 		AlgoritmoDijkstra algoritmo = new AlgoritmoDijkstra();
-		resultado = algoritmo.encontrarMenorCaminhoDijkstra(grafo, verticeOrigem, verticeDestino);
+		resultado = algoritmo.algoritmoDijkstraParaEncontrarMenorCaminho(grafo, verticeOrigem, verticeDestino);
 		StringBuilder strBuilder = new StringBuilder();
 		
 		for (int indice = 0; indice < resultado.size(); indice++) {

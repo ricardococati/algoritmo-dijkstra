@@ -15,8 +15,7 @@ public class AlgoritmoDijkstra {
 	Vertice vizinho = new Vertice();
 	List<Vertice> naoVisitados = new ArrayList<Vertice>();
 
-	// Algoritmo de Dijkstra
-	public List<Vertice> encontrarMenorCaminhoDijkstra(Grafo grafo, Vertice v1, Vertice v2) {
+	public List<Vertice> algoritmoDijkstraParaEncontrarMenorCaminho(Grafo grafo, Vertice v1, Vertice v2) {
 		menorCaminho.add(v1);
 		for (int i = 0; i < grafo.getVertices().size(); i++) {
 			if (grafo.getVertices().get(i).getDescricao().equals(v1.getDescricao())) {
