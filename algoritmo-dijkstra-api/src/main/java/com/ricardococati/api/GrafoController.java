@@ -33,7 +33,7 @@ public class GrafoController {
 		this.grafoService = grafoService;
 	}
 
-	@ApiOperation(value = "grafo", notes = NOTAS, response = GrafoDTO.class)
+	@ApiOperation(value = "grafo", notes = NOTAS)
 	@RequestMapping(path="/grafo" , method = RequestMethod.GET)
 	public ResponseEntity<GrafoDTO>  listaCustoDaRota(@RequestParam(name = "ids", required = false) List<String> ids) {
 		GrafoDTO grafoDTO = null;
@@ -44,6 +44,7 @@ public class GrafoController {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
 		}
 		return new ResponseEntity<>(grafoDTO, HttpStatus.OK);
 	}

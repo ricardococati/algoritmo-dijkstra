@@ -18,31 +18,33 @@ public class CarregaDadosArquivo {
 
 	public static List<Vertice> montaListaVertice(String nomeArquivo) throws IOException {
 		Grafo grafo = new Grafo();
-		Vertice vertice;
-		File arquivo = new File(nomeArquivo);
+		Vertice vert;
+		File file = new File(nomeArquivo);
 		String vertices[];
 		String linha;
-		ArrayList<String[]> listCustos = new ArrayList<String[]>();
-		BufferedReader bufferReader = null;
+		ArrayList<String[]> custos = new ArrayList<String[]>();
+		BufferedReader bufferRead = null;
 		try {
-			bufferReader = new BufferedReader(new FileReader(arquivo));
+			bufferRead = new BufferedReader(new FileReader(file));
 			Map<String, Vertice> mapa = new HashMap<String, Vertice>();
-			while ((linha = bufferReader.readLine()) != null) {
+			while ((linha = bufferRead.readLine()) != null) {
 				if (linha.contains(",")) {
-					listCustos.add(linha.split("/"));
-					vertices = listCustos.get(0)[0].split(",");
-					vertice = (Vertice) mapa.get(vertices[0]);
-					if (vertice == null) {
-						vertice = new Vertice();
+					custos.add(linha.split("/"));
+					vertices = custos.get(0)[0].split(",");
+					vert = (Vertice) mapa.get(vertices[0]);
+					if (vert == null) {
+						vert = new Vertice();
 					}
 					List<Vertice> vizinhosAtual = new ArrayList<Vertice>();
 					List<Aresta> arestasAtual = new ArrayList<Aresta>();
-					vertice.setDescricao(vertices[0]);
-					mapa.put(vertices[0], vertice);
+					vert.setDescricao(vertices[0]);
+					mapa.put(vertices[0], vert);
+
 					if (linha.contains("/")) {
-						String pesoArestas[] = listCustos.get(0)[1].split(",");
+						String pesoArestas[] = custos.get(0)[1].split(",");
 						for (int i = 1; i < vertices.length; i++) {
 							Vertice vit;
+							// vit = g.encontrarVertice(vertices[i]);
 							vit = mapa.get(vertices[i]);
 							if (vit == null) {
 								vit = new Vertice();
@@ -50,32 +52,35 @@ public class CarregaDadosArquivo {
 							vit.setDescricao(vertices[i]);
 							vizinhosAtual.add(vit);
 							mapa.put(vertices[i], vit);
-							Aresta ait = new Aresta(vertice, vit);
+
+							Aresta ait = new Aresta(vert, vit);
 							ait.setPeso(Integer.parseInt(pesoArestas[i - 1]));
 							arestasAtual.add(ait);
+
 						}
-						vertice.setVizinhos(vizinhosAtual);
-						vertice.setArestas(arestasAtual);
+						vert.setVizinhos(vizinhosAtual);
+						vert.setArestas(arestasAtual);
 					}
 				} else {
-					vertice = (Vertice) mapa.get(linha);
-					if (vertice == null) {
-						vertice = new Vertice();
+					vert = (Vertice) mapa.get(linha);
+					if (vert == null) {
+						vert = new Vertice();
 					}
-					vertice.setDescricao(linha);
-					mapa.put(linha, vertice);
+					vert.setDescricao(linha);
+					mapa.put(linha, vert);
 				}
-				grafo.addVertice(vertice);
-				listCustos.clear();
+				grafo.addVertice(vert);
+				custos.clear();
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("Nao encontrou o arquivo");
 			e.printStackTrace();
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			if(bufferReader != null) {
-				bufferReader.close();
+			if(bufferRead != null) {
+				bufferRead.close();
 			}
 		}
 		return grafo.getVertices();
