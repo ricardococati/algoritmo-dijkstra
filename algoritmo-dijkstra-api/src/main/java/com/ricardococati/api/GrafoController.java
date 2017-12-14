@@ -22,7 +22,7 @@ public class GrafoController {
 
 	private GrafoService grafoService;
 
-	private static final String MENSAGEM = "Lista de Nós do Grafo armazenados na base e seus respectivos custos: ";
+	private static final String MENSAGEM = "Lista de Nós do Grafo armazenados no arquivo e seus respectivos custos: ";
 
 	private static final String OPCOES = "\n AD4, DE1, EC8, CB2, BA6, AC9, DF7, FC5, FE9, BD3, FA3";
 	

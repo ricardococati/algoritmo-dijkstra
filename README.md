@@ -31,17 +31,7 @@ Após start do Spring Boot, acessar a URL http://localhost:8880/swagger-ui.html
 Massa de dados para teste:
 
 ```json
-[
-	{"custo": 4,"nodeDestino": "A","nodeOrigem": "D"},
-	{"custo": 1,"nodeDestino": "D","nodeOrigem": "E"},
-	{"custo": 8,"nodeDestino": "E","nodeOrigem": "C"},
-	{"custo": 2,"nodeDestino": "C","nodeOrigem": "B"},
-	{"custo": 6,"nodeDestino": "B","nodeOrigem": "A"},
-	{"custo": 9,"nodeDestino": "A","nodeOrigem": "C"},
-	{"custo": 7,"nodeDestino": "D","nodeOrigem": "F"},
-	{"custo": 5,"nodeDestino": "F","nodeOrigem": "C"},
-	{"custo": 9,"nodeDestino": "F","nodeOrigem": "E"},
-	{"custo": 3,"nodeDestino": "B","nodeOrigem": "D"},
-	{"custo": 3,"nodeDestino": "F","nodeOrigem": "A"}
-]
+
+	A, D, E
+
 ```
