@@ -5,21 +5,26 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
-
-import com.ricardococati.model.CustoNodeGrafo;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class LerDoArquivo {
 
-	public static List<Vertice> montaListaVertice(List<CustoNodeGrafo> list) {
+	public static List<Vertice> montaListaVertice(String nomeArquivo) throws IOException {
 
 		Grafo g = new Grafo();
 		Vertice v;
+		File f = new File(nomeArquivo);
 		String vertices[];
 		String linha;
 		ArrayList<String[]> s1 = new ArrayList<String[]>();
+		
+		BufferedReader br = null;
 
 		try {
+			br = new BufferedReader(new FileReader(f));
 
 			Map<String, Vertice> mapa = new HashMap<String, Vertice>();
 
@@ -90,6 +95,10 @@ public class LerDoArquivo {
 		catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			if(br != null) {
+				br.close();
+			}
 		}
 		//Retornando os vertices
 		return g.getVertices();

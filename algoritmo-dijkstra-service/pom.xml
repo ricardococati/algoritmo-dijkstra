@@ -17,14 +17,6 @@
             <groupId>com.ricardococati</groupId>
             <artifactId>algoritmo-dijkstra-model</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.ricardococati</groupId>
-            <artifactId>algoritmo-dijkstra-repository</artifactId>
-        </dependency>
-        <dependency>
-		    <groupId>com.google.code.gson</groupId>
-		    <artifactId>gson</artifactId>
-		</dependency>
     </dependencies>
 
 </project>

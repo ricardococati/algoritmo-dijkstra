@@ -12,18 +12,4 @@
 
     <artifactId>algoritmo-dijkstra-model</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>1.5.8.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>RELEASE</version>
-        </dependency>
-
-    </dependencies>
-
 </project>

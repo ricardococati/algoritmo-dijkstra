@@ -1,18 +1,21 @@
 package com.ricardococati.api;
 
-import com.ricardococati.dto.GrafoDTO;
-import com.ricardococati.model.CustoNodeGrafo;
-import com.ricardococati.model.RangeNodeGrafo;
-import com.ricardococati.service.GrafoService;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
+import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ricardococati.dto.GrafoDTO;
+import com.ricardococati.service.GrafoService;
+
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 public class GrafoController {
@@ -30,21 +33,17 @@ public class GrafoController {
 		this.grafoService = grafoService;
 	}
 
-	@ApiOperation(value = "grafo", notes = "Adiciona Grafos de Teste" , response = Void.class)
-	@RequestMapping(path = "/grafo", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Void> addGrafo(@RequestBody List<CustoNodeGrafo> grafos) {
-		for (CustoNodeGrafo custo : grafos) {
-			this.grafoService.save(custo);
-		}
-		return new ResponseEntity<>(HttpStatus.CREATED);
-	}
-
 	@ApiOperation(value = "grafo", notes = NOTAS, response = GrafoDTO.class)
 	@RequestMapping(path="/grafo" , method = RequestMethod.GET)
 	public ResponseEntity<GrafoDTO>  listaCustoDaRota(@RequestParam(name = "ids", required = false) List<String> ids) {
-		GrafoDTO grafoDTO = this.grafoService.retornaMenorCaminhoGrafoDTO(ids);
-		if (Objects.isNull(grafoDTO)) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		GrafoDTO grafoDTO = null;
+		try {
+			grafoDTO = this.grafoService.retornaMenorCaminhoGrafoDTO(ids);
+			if (Objects.isNull(grafoDTO)) {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		return new ResponseEntity<>(grafoDTO, HttpStatus.OK);
 	}

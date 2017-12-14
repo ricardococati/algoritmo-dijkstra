@@ -1,38 +1,27 @@
 package com.ricardococati.service;
 
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.ricardococati.dto.GrafoDTO;
-import com.ricardococati.model.CustoNodeGrafo;
-import com.ricardococati.model.RangeNodeGrafo;
-import com.ricardococati.repository.GrafoRepository;
 import com.ricardococati.service.algoritmo.AlgoritmoDijkstra;
 import com.ricardococati.service.algoritmo.Grafo;
 import com.ricardococati.service.algoritmo.LerDoArquivo;
 import com.ricardococati.service.algoritmo.Vertice;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class GrafoService implements Serializable {
 
 	private static final long serialVersionUID = 25671121174988145L;
 
-	private GrafoRepository grafoRepository;
-
-	@Autowired
-	public GrafoService(GrafoRepository grafoRepository) {
-		this.grafoRepository = grafoRepository;
-	}
-
-	public GrafoDTO retornaMenorCaminhoGrafoDTO(List<String> ids){
+	public GrafoDTO retornaMenorCaminhoGrafoDTO(List<String> ids) throws IOException{
 		GrafoDTO retorno = new GrafoDTO();
 		Grafo grafo = new Grafo();
-		List<CustoNodeGrafo> list = this.findAll();
-		grafo.setVertices(LerDoArquivo.montaListaVertice(list));
+		grafo.setVertices(LerDoArquivo.montaListaVertice("teste.txt"));
 		Vertice verticeOrigem = new Vertice();
 		Vertice verticeDestino = new Vertice();
 
@@ -52,22 +41,5 @@ public class GrafoService implements Serializable {
 		}
 		retorno.setDescricao(strBuilder.toString());
 		return retorno;
-	}
-
-	@Transactional
-	public void save(final CustoNodeGrafo custoNodeGrafo) {
-		this.grafoRepository.save(custoNodeGrafo);
-	}
-
-	public List<CustoNodeGrafo> findAll() {
-		return this.grafoRepository.findAll();
-	}
-
-	public CustoNodeGrafo findById(Integer id) {
-		return this.grafoRepository.findById(id);
-	}
-
-	public List<CustoNodeGrafo> findGrafosByIds(List<Integer> ids) {
-		return this.grafoRepository.findByIdIn(ids);
 	}
 }
