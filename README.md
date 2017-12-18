@@ -7,7 +7,6 @@ Expor o serviço do Algoritmo de Dijkstra para calcular a menor rota entre ponto
 
 * [Maven](https://maven.apache.org/)
 * [Spring Boot](https://projects.spring.io/spring-boot/)
-* [HSQLDB](http://hsqldb.org/)
 * [Swagger](https://swagger.io/)
 * [IntelliJ](https://www.jetbrains.com/idea/)
 * [Java 1.8](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html)
